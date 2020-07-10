@@ -1,0 +1,8 @@
+---
+- hosts: rhel6
+  tasks:
+    - name: Creates directory
+      file:
+        path: /src/cee-an-120
+        state: directory
+
