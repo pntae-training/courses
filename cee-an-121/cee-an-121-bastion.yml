@@ -2,5 +2,5 @@
   become: true
   file:
     path: /root/cee-an-121-bastion
-    state: file
+    state: touch
 

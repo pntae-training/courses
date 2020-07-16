@@ -1,7 +1,7 @@
-- name: cee-an-120 - create directory on frontend
+- name: cee-an-121 - create directory on frontend
   become: true
   file:
-    path: /root/cee-an-120-frontend
-    state: directory
+    path: /root/cee-an-121-frontend
+    state: touch
 
 

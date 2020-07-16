@@ -1,6 +1,6 @@
 - name: cee-an-121 - create directory on appdb
   become: true
   file:
-    path: /root/cee-an-120-appdb
-    state: file
+    path: /root/cee-an-121-appdb
+    state: touch
 
