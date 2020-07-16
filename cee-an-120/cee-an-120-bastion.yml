@@ -1,6 +1,8 @@
-- name: cee-an-120 - create directory on bastion
+- name: cee-an-120 - get script
   become: true
-  file:
-    path: /root/cee-an-120-bastion
-    state: directory
+  get_url:
+    url: https://github.com/pntae-training/courses/raw/master/cee-rl-021/private/cee-rl-021
+    dest: /usr/local/bin/
+    mode: '0755'
+
 
