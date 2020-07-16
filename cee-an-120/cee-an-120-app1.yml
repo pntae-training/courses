@@ -1,0 +1,6 @@
+- name: cee-an-120 - create directory on app1
+  become: true
+  file:
+    path: /root/cee-an-120-app1
+    state: directory
+

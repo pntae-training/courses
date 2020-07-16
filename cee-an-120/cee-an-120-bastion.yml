@@ -1,0 +1,6 @@
+- name: cee-an-120 - create directory on bastion
+  become: true
+  file:
+    path: /root/cee-an-120-bastion
+    state: directory
+
