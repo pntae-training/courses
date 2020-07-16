@@ -1,0 +1,7 @@
+- name: cee-an-120 - create directory on frontend
+  become: true
+  file:
+    path: /root/cee-an-120-frontend
+    state: directory
+
+
