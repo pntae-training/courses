@@ -1,0 +1,6 @@
+- name: cee-an-121 - create directory on node1
+  become: true
+  file:
+    path: /root/cee-an-121-node1
+    state: touch
+
