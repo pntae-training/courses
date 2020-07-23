@@ -6,9 +6,9 @@
     mode: '0755'
 
 - name: clusterha - install python module
-    become: true
-    shell: pip2.7 install dogpile.cache==0.9.2
+  become: true
+  shell: pip2.7 install dogpile.cache==0.9.2
 
 - name: clusterha - run novello.sh
-    become: true
-    shell: /root/novello.sh
+  become: true
+  shell: /root/novello.sh

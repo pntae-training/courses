@@ -12,8 +12,8 @@
     state: started
 
 - name: set hacluster password
-    become: true
-    shell: echo redhat | passwd --stdin hacluster
+  become: true
+  shell: echo redhat | passwd --stdin hacluster
 
     
 

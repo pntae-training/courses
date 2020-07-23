@@ -12,19 +12,19 @@
     state: started
 
 - name: set hacluster password
-    become: true
-    shell: echo redhat | passwd --stdin hacluster
+  become: true
+  shell: echo redhat | passwd --stdin hacluster
 
     
 - name: set hacluster auth
-    become: true
-    shell:  pcs cluster auth nodea.example.com nodeb.example.com nodec.example.com -u hacluster -p redhat
+  become: true
+  shell:  pcs cluster auth nodea.example.com nodeb.example.com nodec.example.com -u hacluster -p redhat
 
 - name: setup cluster
-    become: true
-    shell: pcs cluster setup --start --name mycluster nodea.example.com nodeb.example.com nodec.example.com
+  become: true
+  shell: pcs cluster setup --start --name mycluster nodea.example.com nodeb.example.com nodec.example.com
 
 
 - name: enable pcs cluster
-    become: true
-    shell: pcs cluster enable --all
+  become: true
+  shell: pcs cluster enable --all
