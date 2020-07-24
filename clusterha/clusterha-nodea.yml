@@ -6,17 +6,10 @@
       - fence-agents-all
     state: present
 
-- name: Enable and start pcsd service
-  service:  
-    name: pcsd
-    enabled: yes    
-    state: started
-
 - name: set hacluster password
   become: true
   shell: echo redhat | passwd --stdin hacluster
 
-    
 - name: set hacluster auth
   become: true
   shell:  pcs cluster auth nodea.example.com nodeb.example.com nodec.example.com -u hacluster -p redhat
@@ -25,7 +18,13 @@
   become: true
   shell: pcs cluster setup --start --name mycluster nodea.example.com nodeb.example.com nodec.example.com
 
-
 - name: enable pcs cluster
   become: true
   shell: pcs cluster enable --all
+
+- name: Enable and start pcsd service
+  service:  
+    name: pcsd
+    enabled: yes    
+    state: started
+
