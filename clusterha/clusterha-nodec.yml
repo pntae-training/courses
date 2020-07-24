@@ -16,7 +16,7 @@
   become: true
   user:
     name: hacluster
-    password: redhat
+    password: "$6$redhat$l.NNwn3YXybGpYulm43xTMhs4X1ZUZBx7LfyQwTTnWuEP/JM22H8IV9YWULYZ9S1jbqjW0RTx86DuEmINWI2b/"
 
     
 
