@@ -1,13 +1,9 @@
 - name: clusterha - get novello.sh script for powermanagement configuration
   become: true
   get_url:
-    url: https://www.opentlc.com/download/novello/openstackbmc/novello.sh
+    url: "{{courseurl}}/{{coursecode}}/novello.sh"
     dest: /root/
     mode: '0755'
-
-- name: clusterha - install python module
-  become: true
-  shell: pip2.7 install dogpile.cache==0.9.2
 
 - name: clusterha - run novello.sh
   become: true

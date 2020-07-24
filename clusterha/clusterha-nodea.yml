@@ -8,7 +8,9 @@
 
 - name: set hacluster password
   become: true
-  shell: echo redhat | passwd --stdin hacluster
+  user: 
+    name: hacluster
+    password: redhat
 
 - name: set hacluster auth
   become: true
