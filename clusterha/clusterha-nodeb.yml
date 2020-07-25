@@ -16,7 +16,7 @@
   become: true
   user:
     name: hacluster
-    password: redhat
+    password: "{{ 'redhat' | password_hash('sha512', 'mysecretsalt') }}"
 
 
     
