@@ -5,19 +5,3 @@
       - pcs
       - fence-agents-all
     state: present
-
-- name: Enable and start pcsd service
-  service:  
-    name: pcsd
-    enabled: yes    
-    state: started
-
-- name: set hacluster password
-  become: true
-  user:
-    name: hacluster
-    password: "{{ 'redhat' | password_hash('sha512', 'mysecretsalt') }}"
-
-
-    
-
