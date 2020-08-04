@@ -1,0 +1,7 @@
+- name: server - create directory
+  become: true
+  file:
+    path: /root/server
+    state: directory
+    mode: '0755'
+

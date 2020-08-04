@@ -1,0 +1,7 @@
+- name: tower - create directory
+  become: true
+  file:
+    path: /root/tower
+    state: directory
+    mode: '0755'
+
