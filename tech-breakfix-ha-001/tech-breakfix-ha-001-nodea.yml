@@ -17,18 +17,18 @@
 - name: Install and configure iscsi targetd server and NFS service on Frontend server.
   become: true
   shell:
-    cmd: ansible-playbook iscsi/iscsiserver.yml
+    cmd: ansible-playbook tasks/iscsi/iscsiserver.yml
     chdir: /root
     
 - name: Install all the necessary packages on the nodes and configures iscsi on the cluster nodes.
   become: true
   shell:
-    cmd: ansible-playbook cluster/node_install.yml
+    cmd: ansible-playbook tasks/cluster/node_install.yml
     chdir: /root
     
 - name: Configure a three node cluster with a web service.
   become: true
   shell:
-    cmd: ansible-playbook cluster/cluster_install.yml
+    cmd: ansible-playbook tasks/cluster/cluster_install.yml
     chdir: /root
     
