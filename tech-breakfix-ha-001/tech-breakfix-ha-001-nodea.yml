@@ -9,8 +9,10 @@
 - name: Copy hacluster files to nodea
   become: true
   copy:
-    src: /tmp/{{guid}}/{{coursecode}}/hacluster/*
+    src: /tmp/{{guid}}/{{coursecode}}/hacluster/{{item}}
     dest: /root/
+  with_items:
+    {'hosts','ansible.cfg','tasks','scripts'}
 
 - name: Install and configure iscsi targetd server and NFS service on Frontend server.
   become: true
