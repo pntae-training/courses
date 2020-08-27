@@ -1,0 +1,16 @@
+---
+- name: BreakFix 3 
+  become: true
+  become_user: root
+  hosts: nodea
+  tasks:
+
+     - name: Breaking the node Part A BreakFix 3
+       get_url:
+          url: "http://people.redhat.com/rrajaram/.clusterha/break/break3.sh"
+          dest: /usr/local/bin/
+          mode: '0755'
+
+     - name: Breaking the node Part B BreakFix 3
+       shell: /usr/local/bin/break3.sh
+

@@ -1,0 +1,24 @@
+---
+- name: Breakfix Grading 3
+  become: true
+  become_user: root
+  hosts: nodea 
+  tasks:
+
+     - name: Pull the grading script
+       get_url:
+          url: "http://people.redhat.com/rrajaram/.clusterha/break/break3-grading.sh"
+          dest: /usr/local/bin/
+          mode: '0755'
+       no_log: true
+
+
+     - name: Execute the grading script
+       shell: /usr/local/bin/break3-grading.sh
+       register: result3
+       no_log: true
+
+     - name: Break  3 challenge code
+       debug:
+          var: result3
+

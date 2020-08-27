@@ -1,0 +1,82 @@
+---
+- name: Install packages on the nodes
+  become: true
+  hosts: cluster 
+  tasks:
+
+        - name: Install clusterha packages
+          yum:
+            name:
+                    - pcs
+                    - fence-agents-all
+                    - lvm2-cluster
+                    - gfs2-utils
+                    - iscsi-initiator-utils
+                    - httpd    
+                    - sysstat
+                    - mariadb
+                    - mariadb-server
+                    - tcpdump
+                    - wget
+                    - sysstat 
+            state: present
+
+        - name: copying binary
+          get_url:
+            url: "http://people.redhat.com/rrajaram/.scripts/mk"
+            dest: /usr/local/bin/
+            mode: '0755'
+
+        - name: Pull mysql config file
+          get_url:
+           url: "http://people.redhat.com/rrajaram/.scripts/my.cnf"
+           dest: /etc/my.cnf
+
+        - name: Pull http config file
+          get_url:
+           url: "http://people.redhat.com/rrajaram/.scripts/httpd.conf"
+           dest: /etc/httpd/conf/httpd.conf
+
+        - name: Create cluster system user
+          shell:  echo redhat | passwd hacluster --stdin
+
+        - name: Set iscsi initiator name
+          shell: sed -i 's/^InitiatorName=.*/InitiatorName=iqn.2020-07.com.redhat:srv1/' /etc/iscsi/initiatorname.iscsi
+          when: ansible_hostname == "nodea"
+
+        - name: Set iscsi initiator name
+          shell: sed -i 's/^InitiatorName=.*/InitiatorName=iqn.2020-07.com.redhat:srv2/' /etc/iscsi/initiatorname.iscsi
+          when: ansible_hostname == "nodeb"
+
+        - name: Set iscsi initiator name
+          shell: sed -i 's/^InitiatorName=.*/InitiatorName=iqn.2020-07.com.redhat:srv3/' /etc/iscsi/initiatorname.iscsi
+          when: ansible_hostname == "nodec"
+
+
+        - name: Enable and start PCSD service
+          service:
+            name: pcsd
+            enabled: true
+            state: 'started'
+
+        - name: Enable and start iscsid service
+          service:
+            name: iscsid
+            enabled: true
+            state: 'restarted'
+
+        - name: Enable and start iscsi service
+          service:
+            name: iscsi
+            enabled: true
+            state: 'restarted'
+
+
+        - name: Perform a discovery on bastion and show available target nodes
+          shell: /sbin/iscsiadm --mode discovery --type sendtargets --portal frontend:3260
+
+        - name: Connect to the named target, after updating the local persistent database (cache)
+          shell: /sbin/iscsiadm --mode node --targetname iqn.2020-01.local.rhce.halvm:target --portal frontend:3260 --login
+
+        - name: Connect to the named target
+          shell: /sbin/iscsiadm --mode node --targetname iqn.2020-01.local.rhce.ipa:target --portal frontend:3260 --login
