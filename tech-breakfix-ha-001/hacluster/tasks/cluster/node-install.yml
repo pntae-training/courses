@@ -23,18 +23,18 @@
 
         - name: copying binary
           get_url:
-            url: "http://people.redhat.com/rrajaram/.scripts/mk"
+            url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/scripts/mk"
             dest: /usr/local/bin/
             mode: '0755'
 
         - name: Pull mysql config file
           get_url:
-           url: "http://people.redhat.com/rrajaram/.scripts/my.cnf"
+           url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/scripts/my.cnf"
            dest: /etc/my.cnf
 
         - name: Pull http config file
           get_url:
-           url: "http://people.redhat.com/rrajaram/.scripts/httpd.conf"
+           url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/scripts/httpd.conf"
            dest: /etc/httpd/conf/httpd.conf
 
         - name: Create cluster system user

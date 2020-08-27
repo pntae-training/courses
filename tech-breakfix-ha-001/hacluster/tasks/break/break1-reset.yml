@@ -7,7 +7,7 @@
 
      - name: Resetting the node Part A BreakFixReset 1
        get_url:
-          url: "http://people.redhat.com/rrajaram/.clusterha/break/break1-reset.sh"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/break1-reset.sh"
           dest: /usr/local/bin/
           mode: '0755'
 
@@ -17,7 +17,7 @@
      - name: locationaction 1
        local_action:
         module: get_url
-        url: "http://people.redhat.com/rrajaram/.scripts/typereset.sh"
+        url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/scripts/typereset.sh"
         dest: /usr/local/bin/
         mode: '0755'
        become: yes

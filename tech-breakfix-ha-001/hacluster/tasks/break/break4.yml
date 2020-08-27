@@ -8,14 +8,14 @@
 
      - name: Pull backup file
        get_url:
-          url: "http://people.redhat.com/rrajaram/.clusterha/break/app"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/app"
           dest: /usr/local/bin
           mode: 755
        when: ansible_hostname == "nodea"
 
      - name: Pull backup file
        get_url:
-          url: "http://people.redhat.com/rrajaram/.clusterha/break/break4.sh"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/break4.sh"
           dest: /usr/local/bin
           mode: 755
        when: ansible_hostname == "nodea" 
@@ -23,14 +23,14 @@
 
      - name: Pull backup file
        get_url:
-          url: "http://people.redhat.com/rrajaram/.clusterha/break/backup.service"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/backup.service"
           dest: /etc/systemd/system
           mode: 644
        when: ansible_hostname == "nodea"
 
      - name: Pull backup file
        get_url:
-          url: "http://people.redhat.com/rrajaram/.clusterha/break/backup.timer"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/backup.timer"
           dest: /etc/systemd/system/
           mode: 644
        when: ansible_hostname == "nodea"
@@ -53,14 +53,14 @@
 
      - name: Pull backup file
        get_url:
-          url: "http://people.redhat.com/rrajaram/.clusterha/break/corosync.conf"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/corosync.conf"
           dest: /etc/corosync/
           mode: 644
        when: ansible_hostname != "nodec"
 
      - name: Breaking the node Part A BreakFix 2
        get_url:
-          url: "http://people.redhat.com/rrajaram/.clusterha/break/break5-log.sh"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/break5-log.sh"
           dest: /usr/local/bin/
           mode: '0755'
        when: ansible_hostname != "nodec"

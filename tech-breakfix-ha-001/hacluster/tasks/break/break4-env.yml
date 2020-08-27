@@ -7,7 +7,7 @@
 
      - name: Pull the breakfix 4 environment files
        get_url:
-          url: "http://people.redhat.com/rrajaram/.clusterha/break/twonode-new-cluster.tar.bz2"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/twonode-new-cluster.tar.bz2"
           dest: /var/tmp/
        when: ansible_hostname == "nodea"
 
@@ -18,7 +18,7 @@
 
      - name: Pull backup file
        get_url:
-          url: "http://people.redhat.com/rrajaram/.clusterha/break/corosync.conf"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/corosync.conf"
           dest: /etc/corosync/
           mode: 644
        when: ansible_hostname != "nodec"
@@ -40,7 +40,7 @@
      - name: locationaction 1
        local_action:
         module: get_url
-        url: "http://people.redhat.com/rrajaram/.scripts/typereset.sh"
+        url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/scripts/typereset.sh"
         dest: /usr/local/bin/
         mode: '0755'
        become: yes

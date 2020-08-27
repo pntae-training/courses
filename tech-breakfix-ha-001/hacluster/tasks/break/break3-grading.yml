@@ -7,7 +7,7 @@
 
      - name: Pull the grading script
        get_url:
-          url: "http://people.redhat.com/rrajaram/.clusterha/break/break3-grading.sh"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/break3-grading.sh"
           dest: /usr/local/bin/
           mode: '0755'
        no_log: true

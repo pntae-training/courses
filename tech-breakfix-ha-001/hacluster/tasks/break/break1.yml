@@ -7,7 +7,7 @@
 
      - name: Breaking the node Part A BreakFix 1
        get_url:
-          url: "http://people.redhat.com/rrajaram/.scripts/break1.sh"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/scripts/break1.sh"
           dest: /usr/local/bin/
           mode: '0755'
        when: ansible_hostname == "nodea"
