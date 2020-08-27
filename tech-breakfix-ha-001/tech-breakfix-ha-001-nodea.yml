@@ -6,3 +6,8 @@
       - fence-agents-all
     state: present
 
+- name: Copy hacluster files to nodea
+  become: true
+  copy:
+    src: /tmp/{{guid}}/{{coursecode}}/hacluster
+    dest: /root/
