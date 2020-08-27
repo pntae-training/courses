@@ -23,7 +23,7 @@
 - name: Install all the necessary packages on the nodes and configures iscsi on the cluster nodes.
   become: true
   shell:
-    cmd: ansible-playbook tasks/cluster/node_install.yml
+    cmd: ansible-playbook tasks/cluster/node-install.yml
     chdir: /root
     
 - name: Configure a three node cluster with a web service.
