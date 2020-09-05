@@ -6,6 +6,7 @@
     mode: '0755'
 
 - name: Download elk_server ansible role on tower VM
+  become: true
   unarchive:
     src: "{{courseurl}}/{{coursecode}}/elk_server.zip"
     dest: /var/lib/awx/projects/
