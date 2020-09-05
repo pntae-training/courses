@@ -5,3 +5,8 @@
     state: directory
     mode: '0755'
 
+- name: Download elk_server ansible role on tower VM
+  unarchive:
+    src: "{{courseurl}}/{{coursecode}}/elk_server.zip"
+    dest: /var/lib/aws/project
+    remote_src: yes 
