@@ -8,5 +8,5 @@
 - name: Download elk_server ansible role on tower VM
   unarchive:
     src: "{{courseurl}}/{{coursecode}}/elk_server.zip"
-    dest: /var/lib/aws/project
+    dest: /var/lib/awx/projects/
     remote_src: yes 
