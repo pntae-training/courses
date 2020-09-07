@@ -5,6 +5,12 @@
     state: directory
     mode: '0755'
 
+- name: FIXME TMP task to install unzip
+  become: true
+  yum:
+    name: unzip
+    state: present
+
 - name: Download elk_server ansible role on tower VM
   become: true
   unarchive:
