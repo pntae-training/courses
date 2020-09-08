@@ -23,7 +23,6 @@
   shell:
     cmd: ansible-playbook node-install.yml
     chdir: /root/breakfix1
-    warn: false
     
     #- name: Configure a three node cluster with a web service.
     #become: true
