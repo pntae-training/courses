@@ -1,0 +1,10 @@
+[all:vars]
+ansible_user = cloud-user
+
+[iscsiserver]
+frontend.example.com
+
+[cluster]
+nodea.example.com
+nodeb.example.com
+nodec.example.com
