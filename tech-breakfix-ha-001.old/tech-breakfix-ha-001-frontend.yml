@@ -1,0 +1,10 @@
+- name: frontend - get novello.sh script for powermanagement configuration
+  become: true
+  get_url:
+    url: "{{courseurl}}/{{coursecode}}/novello.sh"
+    dest: /usr/local/bin/
+    mode: '0755'
+
+- name: clusterha - run novello.sh
+  become: true
+  shell: /usr/local/bin/novello.sh

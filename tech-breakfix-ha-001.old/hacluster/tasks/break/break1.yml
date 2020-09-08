@@ -1,0 +1,19 @@
+---
+- name: Setting up break 1
+  become: true
+  become_user: root
+  hosts: cluster 
+  tasks:
+
+     - name: Breaking the node Part A BreakFix 1
+       get_url:
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/scripts/break1.sh"
+          dest: /usr/local/bin/
+          mode: '0755'
+       when: ansible_hostname == "nodea"
+       
+
+     - name: Breaking the node Part B BreakFix 1
+       shell: /usr/local/bin/break1.sh
+       when: ansible_hostname == "nodea"
+

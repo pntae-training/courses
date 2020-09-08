@@ -1,0 +1,17 @@
+---
+- name: Setting up break 2 challenge
+  become: true
+  become_user: root
+  hosts: nodea
+  tasks:
+
+     - name: Breaking the node Part A BreakFix 2
+       get_url:
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/break/break2.sh"
+          dest: /usr/local/bin/
+          mode: '0755'
+
+     - name: Breaking the node Part B BreakFix 2
+       shell: /usr/local/bin/break2.sh
+       poll: 0
+       async: 45

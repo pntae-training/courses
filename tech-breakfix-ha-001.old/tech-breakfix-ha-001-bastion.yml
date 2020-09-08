@@ -1,0 +1,7 @@
+- name: Bastion - get {{coursecode}}.sh script for lab setup configuration and grading
+  become: true
+  get_url:
+    url: "{{courseurl}}/{{coursecode}}/{{coursecode}}.sh"
+    dest: /usr/local/bin/
+    mode: '0755'
+
