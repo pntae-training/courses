@@ -26,9 +26,9 @@
     cmd: ansible-playbook tasks/cluster/node-install.yml
     chdir: /root
     
-- name: Configure a three node cluster with a web service.
-  become: true
-  shell:
-    cmd: ansible-playbook tasks/cluster/cluster_install.yml
-    chdir: /root
+    #- name: Configure a three node cluster with a web service.
+    #become: true
+    #shell:
+    #cmd: ansible-playbook tasks/cluster/cluster_install.yml
+    #chdir: /root
     
