@@ -6,7 +6,7 @@ yum install nfs-utils targetcli wget -y
 dd if=/dev/zero of=/var/tmp/file1.img bs=1M count=2000
 dd if=/dev/zero of=/var/tmp/file2.img bs=1M count=2000
 #pull the configured targetcli configuration file
-wget --output-document=/etc/target/saveconfig.json https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/tasks/saveconfig.json
+wget --output-document=/etc/target/saveconfig.json https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/breakfix1/saveconfig.json
 #restart target
 systemctl restart target
 mkdir /nfs

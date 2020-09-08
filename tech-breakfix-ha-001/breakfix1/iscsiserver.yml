@@ -7,7 +7,7 @@
 
      - name: iscsi target server configuration. Get the script
        get_url:
-          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/hacluster/scripts/target-iscsi-server.sh"
+          url: "https://raw.githubusercontent.com/pntae-training/courses/master/tech-breakfix-ha-001/breakfix1/target-iscsi-server.sh"
           dest: /usr/local/bin/
           mode: '0755'
 
