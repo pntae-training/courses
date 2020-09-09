@@ -1,32 +1,9 @@
-#- name: Install clusterha packages
-#  become: true
-#  yum:
-#    name:
-#      - pcs
-#      - fence-agents-all
-#    state: present
+- name: Install clusterha packages
+  become: true
+  yum:
+    name:
+      - pcs
+      - fence-agents-all
+    state: present
 
-- name: Copy breakfix1 files to nodea
-  become: true
-  copy:
-    src: /tmp/{{guid}}/{{coursecode}}/breakfix1
-    dest: /root/
-
-- name: Install and configure iscsi targetd server and NFS service on Frontend server.
-  become: true
-  shell:
-    cmd: ansible-playbook iscsiserver.yml
-    chdir: /root/breakfix1
-    
-- name: Install all the necessary packages on the nodes and configures iscsi on the cluster nodes.
-  become: true
-  shell:
-    cmd: ansible-playbook node-install.yml
-    chdir: /root/breakfix1
-    
-    #- name: Configure a three node cluster with a web service.
-    #become: true
-    #shell:
-    #cmd: ansible-playbook tasks/cluster/cluster_install.yml
-    #chdir: /root
     
