@@ -1,12 +1,4 @@
-- name: Install clusterha packages
-  become: true
-  yum:
-    name:
-      - pcs
-      - fence-agents-all
-    state: present
-
-    
+---
 - name: Install clusterha packages
   yum:
     name:
