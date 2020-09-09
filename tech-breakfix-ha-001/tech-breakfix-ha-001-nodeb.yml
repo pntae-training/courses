@@ -1,7 +1,7 @@
-- name: nodec - create directory
+- name: nodeb - create directory
   become: true
   file:
-    path: /root/nodec
+    path: /root/nodeb
     state: directory
     mode: '0755'
 
