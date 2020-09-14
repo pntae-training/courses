@@ -25,5 +25,5 @@
  
 - name: run-node-install.sh
   become: true
-  script: run-node-install.sh
+  script: /tmp/{{guid}}/{{coursecode}}/run-node-install.sh
 
