@@ -17,9 +17,13 @@
     cmd: ansible-playbook iscsiserver.yml
     chdir: /root/breakfix1
 
-- name: Install all the necessary packages on the nodes and configures iscsi on the cluster nodes.
+#- name: Install all the necessary packages on the nodes and configures iscsi on the cluster nodes.
+#  become: true
+#  shell:
+#    cmd: ansible-playbook node-install.yml
+#    chdir: /root/breakfix1
+ 
+- name: run-node-install.sh
   become: true
-  shell:
-    cmd: ansible-playbook node-install.yml
-    chdir: /root/breakfix1
-    
+  script: run-node-install.sh
+
