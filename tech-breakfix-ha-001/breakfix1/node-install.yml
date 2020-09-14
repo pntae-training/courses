@@ -53,6 +53,7 @@
           shell: sed -i 's/^InitiatorName=.*/InitiatorName=iqn.2020-07.com.redhat:srv3/' /etc/iscsi/initiatorname.iscsi
           when: inventory_hostname == "nodec.example.com"
 
+
         - name: Enable and start PCSD service
           service:
             name: pcsd
@@ -108,16 +109,16 @@
           when: inventory_hostname == "nodea.example.com"
 
         - name: lvm locking 
-          shell: /sbin/lvmconf --enable-cluster
+          shell: /sbin/lvmconf --enable-cluster; systemctl disable lvm2-lvmetad --now
           when: inventory_hostname == "nodea.example.com"
 
         - name: lvm locking
-          shell: /sbin/lvmconf --enable-cluster
+          shell: /sbin/lvmconf --enable-cluster; systemctl disable lvm2-lvmetad --now
           when: inventory_hostname == "nodeb.example.com"
 
  
         - name: lvm locking
-          shell: /sbin/lvmconf --enable-cluster
+          shell: /sbin/lvmconf --enable-cluster; systemctl disable lvm2-lvmetad --now
           when: inventory_hostname == "nodec.example.com"
 
 
@@ -148,16 +149,16 @@
           when: inventory_hostname == "nodea.example.com"
 
         - name: vgcreate
-          shell: vgcreate -Ay -cy webfs_vg /dev/sda; sleep 5
+          shell: vgcreate -Ay -cy --shared webfs_vg /dev/sda; sleep 10 
           when: inventory_hostname == "nodea.example.com"
   
         - name: lvcreate
-          #shell: lvcreate -L1.3G -n webfs_lv webfs_vg -y -q 1>/dev/null 2>&1
-          lvol:
-            vg: webfs_vg
-            lv: webfs_lv
-            size: 1300m
+          shell: lvcreate -L1.3G -n webfs_lv webfs_vg -y --config 'global { locking_type = 0 }'
           when: inventory_hostname == "nodea.example.com"
+
+        - name: lvchange
+          shell:  lvchange -ay /dev/webfs_vg/webfs_lv
+          ignore_errors: yes
 
         - name: GFS
           shell: mkfs.gfs2 -j3 -p lock_dlm -O -t clusterhatroubleshooting:clusterfs /dev/webfs_vg/webfs_lv
