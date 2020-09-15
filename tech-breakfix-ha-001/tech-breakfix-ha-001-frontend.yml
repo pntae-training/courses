@@ -1,10 +1,7 @@
-- name: frontend - get novello.sh script for powermanagement configuration
+- name: frontend - create directory
   become: true
-  get_url:
-    url: "{{courseurl}}/{{coursecode}}/novello.sh"
-    dest: /usr/local/bin/
+  file:
+    path: /root/frontend
+    state: directory
     mode: '0755'
 
-- name: clusterha - run novello.sh
-  become: true
-  shell: /usr/local/bin/novello.sh
