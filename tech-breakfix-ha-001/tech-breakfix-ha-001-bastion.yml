@@ -25,5 +25,6 @@
  
 - name: run-node-install.sh
   become: true
-  script: /tmp/{{guid}}/{{coursecode}}/run-node-install.sh
-
+  shell:
+    cmd: node-install-script.sh
+    chdir: /root/breakfix1

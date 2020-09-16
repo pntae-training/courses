@@ -1,3 +1,7 @@
+#!/bin/bash
+
+echo -e "Started running node-install-script.sh at `date`" >> /tmp/log
+
 for vm in nodea.example.com nodeb.example.com nodec.example.com
 do
 	ssh $vm	"sudo yum -y install pcs fence-agents-all lvm2-cluster gfs2-utils iscsi-initiator-utils httpd sysstat mariadb mariadb-server tcpdump wget sysstat  bzip2"
@@ -70,7 +74,7 @@ ssh nodea.example.com "sudo sh -c 'pvcreate /dev/sda -ff -y; sleep 5'"
 
 ssh nodea.example.com "sudo sh -c 'vgcreate -Ay -cy --shared webfs_vg /dev/sda; sleep 10'"
   
-ssh nodea.example.com "sudo sh -c 'lvcreate -L1.3G -n webfs_lv webfs_vg -y --config 'global { locking_type = 0 }''"
+ssh nodea.example.com "sudo lvcreate -L1.3G -n webfs_lv webfs_vg -y --config 'global { locking_type = 0 }'"
 
 
 for vm in nodea.example.com nodeb.example.com nodec.example.com
@@ -84,7 +88,7 @@ ssh nodea.example.com "sudo pcs resource create webnfs ocf:heartbeat:Filesystem 
 
 ssh nodea.example.com "sudo pcs resource create clusterfs Filesystem device="/dev/webfs_vg/webfs_lv" directory="/var/log/httpd" fstype="gfs2" options="noatime" op monitor interval=10s on-fail=fence clone interleave=true"
 
-ssh nodea.example.com "sudo pcs constraint order start clvmd-clone then clusterfs-clone;pcs constraint colocation add clusterfs-clone with clvmd-clone"
+ssh nodea.example.com "sudo sh -c 'pcs constraint order start clvmd-clone then clusterfs-clone;pcs constraint colocation add clusterfs-clone with clvmd-clone'"
 
 ssh nodea.example.com "sudo pcs resource create apache_res apache configfile="/etc/httpd/conf/httpd.conf" statusurl="http://127.0.0.1/server-status" --group web"
 
@@ -98,3 +102,4 @@ done
 
 ssh nodea.example.com "sudo pcs resource cleanup"
 
+echo -e "Ended running node-install-script.sh at `date`" >> /tmp/log
