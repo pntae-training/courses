@@ -22,7 +22,13 @@
 #  shell:
 #    cmd: ansible-playbook node-install.yml
 #    chdir: /root/breakfix1
- 
+
+- name: change permission
+  become: true
+  shell: 
+    cmd: chmod 777 /root/breakfix1/node-install-script.sh
+
+
 - name: run-node-install.sh
   become: true
   shell:
