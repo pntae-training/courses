@@ -32,5 +32,5 @@
 - name: run node-install-script.sh
   become: true
   shell:
-    cmd: node-install-script.sh
+    cmd: /root/breakfix1/node-install-script.sh
     chdir: /root/breakfix1
