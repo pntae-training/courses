@@ -26,10 +26,10 @@
 - name: change permission
   become: true
   shell: 
-    cmd: chmod 777 /root/breakfix1/node-install-script.sh
+    cmd: chmod 755 /root/breakfix1/node-install-script.sh
 
 
-- name: run-node-install.sh
+- name: run node-install-script.sh
   become: true
   shell:
     cmd: node-install-script.sh
