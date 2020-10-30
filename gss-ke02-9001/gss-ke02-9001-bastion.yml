@@ -1,0 +1,7 @@
+- name: bastion - create directory
+  become: true
+  file:
+    path: /root/bastion
+    state: directory
+    mode: '0755'
+
